@@ -8,7 +8,8 @@ const { createUser, login } = require('../controllers/users');
 const allowedCors = [
   'https://evgsid.nomoredomainsmonster.ru',
   'http://evgsid.nomoredomainsmonster.ru',
-  'localhost:3000',
+  'http://localhost:3000',
+  'https://localhost:3000',
 ];
 
 router.use(requestLogger);
