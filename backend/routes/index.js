@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { celebrate, Joi, errors } = require('celebrate');
 // eslint-disable-next-line import/no-extraneous-dependencies
-const { cors } = require('cors');
+const cors = require('cors');
 const { requestLogger, errorLogger } = require('../middlewares/logger');
 const NotFoundError = require('../errors/NotFound');
 const { createUser, login } = require('../controllers/users');
