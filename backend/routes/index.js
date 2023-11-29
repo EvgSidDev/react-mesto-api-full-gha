@@ -1,6 +1,7 @@
 const router = require('express').Router();
-// eslint-disable-next-line import/no-extraneous-dependencies
 const { celebrate, Joi, errors } = require('celebrate');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const { cors } = require('cors');
 const { requestLogger, errorLogger } = require('../middlewares/logger');
 const NotFoundError = require('../errors/NotFound');
 const { createUser, login } = require('../controllers/users');
@@ -14,20 +15,9 @@ const allowedCors = [
 
 router.use(requestLogger);
 
-router.use((req, res, next) => {
-  const { origin } = req.headers;
-  if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
-  const { method } = req;
-  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
-
-  if (method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
-    res.end();
-  }
-  next();
-});
+router.use(cors({
+  origin: allowedCors,
+}));
 
 router.get('/crash-test', () => {
   setTimeout(() => {
