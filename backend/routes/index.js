@@ -5,7 +5,23 @@ const { requestLogger, errorLogger } = require('../middlewares/logger');
 const NotFoundError = require('../errors/NotFound');
 const { createUser, login } = require('../controllers/users');
 
+const allowedCors = [
+  'https://evgsid.nomoredomainsmonster.ru',
+  'http://evgsid.nomoredomainsmonster.ru',
+  'localhost:3000',
+];
+
 router.use(requestLogger);
+
+router.use((req, res, next) => {
+  const { origin } = req.headers;
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+
+  next();
+});
+
 router.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
