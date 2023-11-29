@@ -40,7 +40,7 @@ export class Auth {
   }
 }
 const auth = new Auth({
-  url: "https://auth.nomoreparties.co",
+  url: "https://api.evgsid.nomoredomainsmonster.ru",
   headers: {
     "Content-Type": "application/json",
   },
