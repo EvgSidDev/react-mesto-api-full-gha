@@ -43,8 +43,6 @@ const auth = new Auth({
   url: 'https://api.evgsid.nomoredomainsmonster.ru',
   headers: {
     'Content-Type': 'application/json',
-    'origin': 'https://evgsid.nomoredomainsmonster.ru'
-
   },
 });
 export default auth;
