@@ -60,7 +60,7 @@ function App() {
 
   function LoginSubmit(data) {
     auth.signIn(data).then((res) => {
-      localStorage.setItem("jwt", res.token);
+      localStorage.setItem("jwt", res.jwt);
       setLoggedIn(true);
     })
     .catch((res) => {
@@ -77,7 +77,7 @@ function App() {
     auth.checkToken(jwt).then((res) => {
       if (res) {
         setLoggedIn(true);
-        setEmail(res.data.email);
+        setEmail(res.email);
         navigate("/");
         api.setJwt(jwt);
         Promise.all([api.getUserInfo(), api.getCards()])
@@ -194,7 +194,7 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((item) => item._id === currentUser._id);
+    const isLiked = card.likes.some((item) => item === currentUser._id);
     api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {

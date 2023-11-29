@@ -10,7 +10,7 @@ export class Api {
   }
 
   getUserInfo() {
-    return fetch(`${this._url}/${this._cohortId}/users/me`, {
+    return fetch(`${this._url}/users/me`, {
       headers: this._headers,
       method: "GET",
     }).then((response) => {
@@ -19,7 +19,7 @@ export class Api {
   }
 
   getCards() {
-    return fetch(`${this._url}/${this._cohortId}/cards`, {
+    return fetch(`${this._url}/cards`, {
       headers: this._headers,
       method: "GET",
     }).then((response) => {
@@ -28,7 +28,7 @@ export class Api {
   }
 
   saveProfileData(data) {
-    return fetch(`${this._url}/${this._cohortId}/users/me`, {
+    return fetch(`${this._url}/users/me`, {
       headers: this._headers,
       method: "PATCH",
       body: JSON.stringify(data),
@@ -38,7 +38,7 @@ export class Api {
   }
 
   addNewCard(data) {
-    return fetch(`${this._url}/${this._cohortId}/cards`, {
+    return fetch(`${this._url}/cards`, {
       headers: this._headers,
       method: "POST",
       body: JSON.stringify(data),
@@ -48,7 +48,7 @@ export class Api {
   }
 
   deleteCard(id) {
-    return fetch(`${this._url}/${this._cohortId}/cards/${id}`, {
+    return fetch(`${this._url}/cards/${id}`, {
       headers: this._headers,
       method: "DELETE",
     }).then((response) => {
@@ -57,7 +57,7 @@ export class Api {
   }
 
   setLike(id) {
-    return fetch(`${this._url}/${this._cohortId}/cards/${id}/likes`, {
+    return fetch(`${this._url}/cards/${id}/likes`, {
       headers: this._headers,
       method: "PUT",
     }).then((response) => {
@@ -66,7 +66,7 @@ export class Api {
   }
 
   deleteLike(id) {
-    return fetch(`${this._url}/${this._cohortId}/cards/${id}/likes`, {
+    return fetch(`${this._url}/cards/${id}/likes`, {
       headers: this._headers,
       method: "DELETE",
     }).then((response) => {
@@ -84,7 +84,7 @@ export class Api {
 
 
   updateAvatar(url) {
-    return fetch(`${this._url}/${this._cohortId}/users/me/avatar`, {
+    return fetch(`${this._url}/users/me/avatar`, {
       headers: this._headers,
       method: "PATCH",
       body: JSON.stringify({ avatar: url }),
@@ -104,6 +104,8 @@ export class Api {
 
 const api = new Api({
   url: "https://api.evgsid.nomoredomainsmonster.ru",
+  // url: "http://localhost:3001",
+
   cohortId: "cohort-74",
   headers: {
     Authorization: "4ca4dfdd-8688-4312-b496-43b033a0044e",

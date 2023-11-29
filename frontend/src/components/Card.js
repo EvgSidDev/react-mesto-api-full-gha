@@ -15,8 +15,8 @@ function Card({ cardData, onCardClickHandle, onCardLikeHandle, onCardDelete}) {
   }
 
   const currentUser = useContext(CurrentUserContext);
-  const isOwn = (cardData.owner._id === currentUser._id);
-  const isLiked = cardData.likes.some((item) => item._id === currentUser._id);
+  const isOwn = (cardData.owner === currentUser._id);
+  const isLiked = cardData.likes.some((item) => item === currentUser._id);
 
   return (
     <li className="element">
