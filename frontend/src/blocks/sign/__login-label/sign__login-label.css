@@ -1,0 +1,11 @@
+.sign__login-label {
+  margin: 0;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: row;
+  color: #fff;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

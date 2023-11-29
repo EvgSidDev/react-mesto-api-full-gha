@@ -1,0 +1,32 @@
+.profile__avatar-area {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  position: relative;
+}
+
+.profile__avatar-area:hover {
+  cursor: pointer;
+}
+
+.profile__avatar-area::after {
+  content: '';
+  display: block;
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  background-image: url('../../../images/edit-pen.svg');
+  top: 47px;
+  left: 47px;
+  visibility: hidden;
+}
+
+.profile__avatar-area:hover:after {
+  visibility: visible;
+}
+
+@media screen and (max-width: 700px) {
+  .profile__avatar-area {
+    align-self: center;
+  }
+}

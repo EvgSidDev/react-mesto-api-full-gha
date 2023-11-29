@@ -1,0 +1,21 @@
+.info-tool-tip__text {
+  color: #000;
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  padding-top: 32px;
+  padding-left: 36px;
+  padding-right: 36px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 700px) {
+  .info-tool-tip__text {
+    font-size: 20px;
+    padding-top: 40px;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}

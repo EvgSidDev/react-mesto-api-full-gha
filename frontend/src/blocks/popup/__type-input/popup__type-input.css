@@ -1,0 +1,16 @@
+.popup__type-input {
+  height: 27px;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  padding-bottom: 5px;
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.popup__type-input:focus {
+  outline: none;
+}
