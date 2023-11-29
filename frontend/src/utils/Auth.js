@@ -41,7 +41,6 @@ export class Auth {
 }
 const auth = new Auth({
   url: 'https://api.evgsid.nomoredomainsmonster.ru',
-  // url: "http://localhost:3001",
   headers: {
     'Content-Type': 'application/json',
   },

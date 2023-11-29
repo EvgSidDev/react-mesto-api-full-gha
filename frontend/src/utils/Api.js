@@ -104,8 +104,6 @@ export class Api {
 
 const api = new Api({
   url: "https://api.evgsid.nomoredomainsmonster.ru",
-  // url: "http://localhost:3001",
-
   cohortId: "cohort-74",
   headers: {
     Authorization: "4ca4dfdd-8688-4312-b496-43b033a0044e",
