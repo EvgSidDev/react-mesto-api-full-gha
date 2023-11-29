@@ -8,7 +8,7 @@ export class Auth {
   signUp(data) {
     return fetch(`${this._url}/signup`, {
       headers: this._headers,
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(data),
     }).then((response) => {
       return this._checkResponse(response);
@@ -17,7 +17,7 @@ export class Auth {
   signIn(data) {
     return fetch(`${this._url}/signin`, {
       headers: this._headers,
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(data),
     }).then((response) => {
       return this._checkResponse(response);
@@ -25,14 +25,14 @@ export class Auth {
   }
   checkToken(jwt) {
     return fetch(`${this._url}/users/me`, {
-      headers: {...this._headers, "Authorization" : `Bearer ${jwt}`},
-      method: "GET"
+      headers: { ...this._headers, Authorization: `Bearer ${jwt}` },
+      method: 'GET',
     }).then((response) => {
       return this._checkResponse(response);
     });
   }
-  _checkResponse(response) {    
-    if (!response.ok) { 
+  _checkResponse(response) {
+    if (!response.ok) {
       return Promise.reject(new Error(response.statusText));
     } else {
       return response.json();
@@ -40,9 +40,11 @@ export class Auth {
   }
 }
 const auth = new Auth({
-  url: "https://api.evgsid.nomoredomainsmonster.ru",
+  url: 'https://api.evgsid.nomoredomainsmonster.ru',
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
+    'origin': 'https://evgsid.nomoredomainsmonster.ru'
+
   },
 });
 export default auth;
