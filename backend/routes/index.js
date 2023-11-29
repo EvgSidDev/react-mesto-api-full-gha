@@ -14,11 +14,18 @@ const allowedCors = [
 router.use(requestLogger);
 
 router.use((req, res, next) => {
-  const { origin } = req.headers;
-  if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
+  // const { origin } = req.headers;
+  res.header('Access-Control-Allow-Origin', '*');
+  // if (allowedCors.includes(origin)) {
 
+  // }
+  const { method } = req;
+  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
+
+  if (method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
+    res.end();
+  }
   next();
 });
 
@@ -35,7 +42,7 @@ router.post(
       password: Joi.string().required(),
     }),
   }),
-  login,
+  login
 );
 router.post(
   '/signup',
@@ -47,12 +54,12 @@ router.post(
         name: Joi.string().min(2).max(30),
         about: Joi.string().min(2).max(30),
         avatar: Joi.string().pattern(
-          /https?:\/\/[a-z1-9\-\.\/\_\~\:\\\?\#\[\]\@\!\$\&\'\(\)\*\+\,\;\=]*/,
+          /https?:\/\/[a-z1-9\-\.\/\_\~\:\\\?\#\[\]\@\!\$\&\'\(\)\*\+\,\;\=]*/
         ),
       })
       .unknown(true),
   }),
-  createUser,
+  createUser
 );
 router.use(require('../middlewares/auth'));
 
