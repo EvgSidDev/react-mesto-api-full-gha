@@ -6,6 +6,11 @@ const NotFoundError = require('../errors/NotFound');
 const { createUser, login } = require('../controllers/users');
 
 router.use(requestLogger);
+router.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 router.post(
   '/signin',
   celebrate({
